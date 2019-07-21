@@ -1,0 +1,15 @@
+#jokefeed {
+  border: 1px solid black;
+  margin: 10px;
+  min-height: 300px;
+}
+
+#submit {
+  border: 1px solid black;
+  margin: 10px;
+  min-height: 150px;
+}
+
+#searchBar {
+  margin: 10px;
+}
