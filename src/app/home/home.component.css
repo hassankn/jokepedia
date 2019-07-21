@@ -28,3 +28,16 @@
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
 }
+
+
+.joke {
+  margin:10px;
+
+  border-radius: 25px;
+  border: 2px solid #ff830a;
+  padding: 20px;
+}
+
+.arrow {
+  max-height: 20px;
+}
