@@ -55,3 +55,11 @@
   max-height: 40px;
   margin-right: 20px;
 }
+
+.headers {
+  color: white;
+  text-shadow: 2px 2px 2px #50340e;
+  text-outline: 5px grey;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,5 +1,5 @@
 <div id="jokefeed">
-  <h1 style="text-align: center; vertical-align: middle" >Joke Feed</h1>
+  <h1 class="headers">Joke Feed</h1>
   <div class="flex-container">
     <div class="flex-item">
       <div class="form-group" id="categories">
@@ -84,8 +84,8 @@
 </div>
 
 <div id="submit">
-  <h1 style="text-align: center; vertical-align: middle" >Submit a joke</h1>
-  <form id="searchBar">
+  <h1 class="headers">Submit a joke</h1>
+  <form id="searchBar" style="padding-bottom: 10px">
     <div class="form-group">
       <label for="search">Joke text</label>
       <input type="text" class="form-control" id="search" aria-describedby="searchHelp" placeholder="Enter joke...">
@@ -99,7 +99,9 @@
         <option>Pakistan's Bowling</option>
       </select>
     </div>
-    <button type="button" class="btn btn-primary btn-lg">Submit</button>
+    <div class="form-group">
+      <button type="button" class="btn btn-success btn-sm btn-block">Submit</button>
+    </div>
 
   </form>
 </div>
