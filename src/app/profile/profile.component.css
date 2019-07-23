@@ -1,0 +1,22 @@
+#profile-container{
+  height: 100%;
+  background: #00aab8;
+}
+
+#joke-stats-card{
+  background: #005efe;
+  margin-left: auto;
+  margin-right: auto;
+  height: 5rem;
+  width: 75%;
+  border-radius: 8px;
+}
+
+#rating-stats-card{
+  background: #005efe;
+  margin-left: auto;
+  margin-right: auto;
+  height: 5rem;
+  width: 75%;
+  border-radius: 8px;
+}
