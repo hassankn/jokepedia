@@ -4,3 +4,7 @@
 body {
   background-color: #fff9e6;
 }
+
+html,head,body{
+  height: 100%;
+}
