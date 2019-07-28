@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../services/user.service";
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +12,14 @@ export class ProfileComponent implements OnInit {
     private userService: UserService
   ) { }
 
+  userJokes = [];
+
   ngOnInit() {
-    console.log(this.userService.getUserJokes());
+    this.getUserJokes();
+    // this.userService.getUserJokes().then(jokes => this.userJokes = jokes);
   }
 
+  async getUserJokes() {
+    await this.userService.getUserJokes().then(jokes => this.userJokes = jokes);
+  }
 }
