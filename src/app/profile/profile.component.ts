@@ -13,14 +13,25 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   userJokes = [];
+  userJokesCount: any;
+  userAverageOfJokesPosted: any;
 
   ngOnInit() {
     this.getUserJokes();
-    // this.userService.getUserJokes().then(jokes => this.userJokes = jokes);
+    this.getUserJokesCount();
+    this.getUserAverageRating();
   }
 
   async getUserJokes() {
-    this.userJokes= await this.userService.getUserJokes();
+    this.userJokes = await this.userService.getUserJokes();
     console.log(this.userJokes);
+  }
+
+  async getUserJokesCount() {
+    this.userJokesCount = await this.userService.getUserJokesCount(1);
+  }
+
+  async getUserAverageRating() {
+    this.userAverageOfJokesPosted = await this.userService.getAverageOfJokesPosted();
   }
 }
