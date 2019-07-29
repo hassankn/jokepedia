@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import moment from 'moment';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+  ) { }
+
+  jokes = [];
 
   ngOnInit() {
+    this.getHomeFeedJokes()
   }
+
+  async getHomeFeedJokes() {
+    this.jokes = await this.userService.getTenRandomJokes();
+
+    this.jokes = this.jokes.map((joke: any) => ({
+      ...joke,
+      relativeTime: moment(joke.timeStamp).format('MMMM Do YYYY, h:mm a'),
+    }));
+
+    console.log(this.jokes);
+
+  }
+
+
 
 }

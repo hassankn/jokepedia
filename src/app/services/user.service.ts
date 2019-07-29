@@ -21,4 +21,10 @@ export class UserService {
   async getAverageOfJokesPosted() {
     return await this.httpClient.get('http://localhost:3000/user/1/averageOfJokesPosted').toPromise();
   }
+
+  async getTenRandomJokes(){
+    const res = await this.httpClient.get('http://localhost:3000/user/getTenRandomJokes').toPromise();
+    console.log(res)
+    return res;
+  }
 }

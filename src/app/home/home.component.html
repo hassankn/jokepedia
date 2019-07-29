@@ -4,7 +4,7 @@
     <div class="flex-item">
       <div class="form-group" id="categories">
         <label for="exampleFormControlSelect1">Category</label>
-        <select class="form-control" >
+        <select class="form-control">
           <option></option>
           <option>Knock knock</option>
           <option>One-liner</option>
@@ -22,7 +22,7 @@
     <div class="flex-item">
       <div class="form-group" id="top">
         <label for="exampleFormControlSelect1">Sort</label>
-        <select class="form-control" >
+        <select class="form-control">
           <option>Hot</option>
           <option>Top of the Month</option>
           <option>Top of the Year</option>
@@ -33,51 +33,31 @@
   </div>
 
   <div class="container-fluid">
-    <div class="joke">
-      <div class="row">
-        <div class="col-sm-1">
-          <div class="row">
-            <img src="../../assets/lol.png" class="emoji">
+    <ng-container *ngFor='let joke of this.jokes'>
+      <div class="joke">
+        <div class="row">
+          <div class="col-sm-1">
+            <div class="row">
+              <img src="../../assets/lol.png" class="emoji">
+            </div>
+            <div class="row">
+              <img src="../../assets/nolol.png" class="emoji" style="margin-top: 10px">
+            </div>
           </div>
-          <div class="row">
-            <img src="../../assets/nolol.png" class="emoji" style="margin-top: 10px">
+          <div class="col-sm-1">
+            <p>{{joke.avgRating}}</p>
           </div>
-        </div>
-        <div class="col-sm-1">
-          <p>1523 lols</p>
-        </div>
-        <div class="col-sm-9">
-          <p>How do you make a waterbed more bouncy? You use spring water</p>
-        </div>
-        <div class="col-sm-1">
-          <img src="../../assets/options.png" id="options">
+          <div class="col-sm-9">
+            <label style="color: #844444">{{joke.username}}</label>
+            <p>{{joke.text}}</p>
+            <label>{{joke.relativeTime}}</label>
+          </div>
+          <div class="col-sm-1">
+            <img src="../../assets/options.png" id="options">
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="joke">
-      <div class="row">
-        <div class="col-sm-1">
-          <div class="row">
-            <img src="../../assets/lol.png" class="emoji">
-          </div>
-          <div class="row">
-            <img src="../../assets/nolol.png" class="emoji" style="margin-top: 10px">
-          </div>
-        </div>
-        <div class="col-sm-1">
-          <p>736 lols</p>
-        </div>
-        <div class="col-sm-9">
-          <p>What do you call a hippy's wife? Mississippi</p>
-        </div>
-        <div class="col-sm-1">
-          <img src="../../assets/options.png" id="options">
-        </div>
-      </div>
-    </div>
-
-
+    </ng-container>
   </div>
 
 </div>
