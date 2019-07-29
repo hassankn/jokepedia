@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   }
 
   async getUserJokes() {
-    await this.userService.getUserJokes().then(jokes => this.userJokes = jokes);
+    this.userJokes= await this.userService.getUserJokes();
+    console.log(this.userJokes);
   }
 }

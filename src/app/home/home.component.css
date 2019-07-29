@@ -37,7 +37,6 @@
 
 .joke {
   margin:10px;
-
   border-radius: 25px;
   border: 2px solid #ff830a;
   padding: 20px;
@@ -52,7 +51,7 @@
 }
 
 #options {
-  max-height: 40px;
+  max-height: 20px;
   margin-right: 20px;
 }
 
