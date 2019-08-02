@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  onCategoryChange(value) {
-    this.jokes = this.jokeService.getJokesForCategory(value);
+  async onCategoryChange() {
+    this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
   }
 
 
