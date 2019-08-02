@@ -4,11 +4,12 @@
     <div class="flex-item">
       <div class="form-group" id="categories">
         <label for="exampleFormControlSelect1">Category</label>
-        <select class="form-control">
+        <select [(ngModel)]="feedCategory" (ngModelChange)="onChange()" class="form-control">
           <option></option>
-          <option>Knock knock</option>
-          <option>One-liner</option>
-          <option>Story</option>
+          <option value="Dad Jokes">Dad Jokes</option>
+          <option value="Knock Knock">Knock knock</option>
+          <option value="One-liner">One-liner</option>
+          <option value="Story">Story</option>
         </select>
       </div>
     </div>

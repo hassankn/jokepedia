@@ -15,9 +15,16 @@ export class HomeComponent implements OnInit {
   ) { }
 
   jokes: any = [];
+  feedCategory: any ='';
 
   ngOnInit() {
     this.getHomeFeedJokes();
+    this.getCategories();
+  }
+
+  async getCategories() {
+
+    // this.jokes = await 
   }
 
   async getHomeFeedJokes() {
@@ -30,6 +37,10 @@ export class HomeComponent implements OnInit {
 
     console.log(this.jokes);
 
+  }
+
+  onChange() {
+    console.log('selected category:' + this.feedCategory);
   }
 
 
