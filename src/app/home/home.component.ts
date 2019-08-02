@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { JokeService } from '../services/joke.service';
 import * as moment from 'moment';
 
 
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private jokeService: JokeService,
   ) { }
 
   jokes: any = [];
@@ -39,8 +41,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  onChange() {
-    console.log('selected category:' + this.feedCategory);
+  onCategoryChange(value) {
+    this.jokes = this.jokeService.getJokesForCategory(value);
   }
 
 
