@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import moment from 'moment';
+import * as moment from 'moment';
 
 
 @Component({
@@ -14,10 +14,10 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  jokes = [];
+  jokes: any = [];
 
   ngOnInit() {
-    this.getHomeFeedJokes()
+    this.getHomeFeedJokes();
   }
 
   async getHomeFeedJokes() {
