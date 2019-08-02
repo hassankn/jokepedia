@@ -18,4 +18,8 @@ export class JokeService {
   async getCategories() {
     return await this.httpClient.get('http://localhost:3000/user/getCategories').toPromise();
   }
+
+  async postJoke(newJoke: any) {
+    return await this.httpClient.post('http://localhost:3000/user/1/postJoke', {newJoke}).toPromise();
+  }
 }
