@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
     newJoke.text = this.postJokeText;
     newJoke.category = this.postJokeCategory;
 
+    console.log(newJoke);
     await this.jokeService.postJoke(newJoke);
   }
 
