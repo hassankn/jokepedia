@@ -14,5 +14,8 @@ export class JokeService {
   async getJokesForCategory(category: string) {
     return await this.httpClient.get('http://localhost:3000/user/getJokesForCategory/' + category).toPromise();
   }
-  
+
+  async getCategories() {
+    return await this.httpClient.get('http://localhost:3000/user/getCategories').toPromise();
+  }
 }

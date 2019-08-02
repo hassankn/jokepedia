@@ -17,7 +17,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   jokes: any = [];
-  feedCategory: any ='';
+  categories: any = [];
+  feedCategory: any = '';
+
 
   ngOnInit() {
     this.getHomeFeedJokes();
@@ -25,8 +27,8 @@ export class HomeComponent implements OnInit {
   }
 
   async getCategories() {
-
-    // this.jokes = await 
+    this.categories = await this.jokeService.getCategories();
+    console.log(this.categories);
   }
 
   async getHomeFeedJokes() {
@@ -44,7 +46,4 @@ export class HomeComponent implements OnInit {
   async onCategoryChange() {
     this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
   }
-
-
-
 }

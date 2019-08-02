@@ -4,12 +4,9 @@
     <div class="flex-item">
       <div class="form-group" id="categories">
         <label for="exampleFormControlSelect1">Category</label>
-        <select [(ngModel)]="feedCategory" (ngModelChange)="onCategoryChange(value)" class="form-control">
-          <option></option>
-          <option value="Dad Jokes">Dad Jokes</option>
-          <option value="Knock Knock">Knock knock</option>
-          <option value="One-liner">One-liner</option>
-          <option value="Story">Story</option>
+        <select [(ngModel)]="feedCategory" (ngModelChange)="onCategoryChange()" class="form-control">
+          <option>All The Jokes 😛</option>
+          <option *ngFor="let c of this.categories" [ngValue]="c.categoryId">{{c.name}}</option>
         </select>
       </div>
     </div>
