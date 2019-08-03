@@ -49,10 +49,14 @@ export class HomeComponent implements OnInit {
   async postJoke() {
     const newJoke: any = {};
     newJoke.text = this.postJokeText;
-    newJoke.category = this.postJokeCategory;
+    newJoke.categoryId = this.postJokeCategory;
 
-    console.log(newJoke);
-    await this.jokeService.postJoke(newJoke);
+    const res = await this.jokeService.postJoke(newJoke);
+    if (res['text'] === newJoke.text) {
+      alert('Joke Inserted! :)');
+    } else {
+      alert('There was in issue inserting the joke :(');
+    }
   }
 
   async onCategoryChange() {
