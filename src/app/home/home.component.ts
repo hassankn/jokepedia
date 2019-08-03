@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
     }));
 
     console.log(this.jokes);
-
   }
 
   async postJoke() {
@@ -61,5 +60,22 @@ export class HomeComponent implements OnInit {
 
   async onCategoryChange() {
     this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
+  }
+
+  async jokeRating(ratingScore: number, jokeId: number) {
+
+    const rate: any = {};
+    rate.jokeId = jokeId;
+    rate.rating = ratingScore;
+    console.log(ratingScore + ' ' + jokeId);
+
+    const res = await this.jokeService.rateJoke(rate);
+    console.log(res);
+    if (res['joke'].jokeId === jokeId && res['rating'] === ratingScore) {
+      alert('Joke Rated! :)');
+    } else {
+      alert('There was in issue rating the joke :(');
+    }
+
   }
 }

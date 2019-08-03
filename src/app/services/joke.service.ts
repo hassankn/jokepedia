@@ -22,4 +22,7 @@ export class JokeService {
   async postJoke(newJoke: any) {
     return await this.httpClient.post('http://localhost:3000/user/1/postJoke', {newJoke}).toPromise();
   }
+  async rateJoke(newRate: any) {
+    return await this.httpClient.post('http://localhost:3000/user/1/rateJoke', {newRate}).toPromise();
+  }
 }

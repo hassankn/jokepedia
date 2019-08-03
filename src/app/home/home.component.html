@@ -36,13 +36,23 @@
         <div class="row">
           <div class="col-sm-1">
             <div class="row">
-              <img src="../../assets/lol.png" class="emoji">
+              <a (click)="jokeRating(5, joke.jokeId)"><img src="../../assets/5.png" class="emoji"></a>
             </div>
             <div class="row">
-              <img src="../../assets/nolol.png" class="emoji" style="margin-top: 10px">
+                <a (click)="jokeRating(4, joke.jokeId)"><img src="../../assets/4.png" class="emoji button" style="margin-top: 10px"></a>
+            </div>
+            <div class="row">
+                <a (click)="jokeRating(3, joke.jokeId)"><img src="../../assets/3.png" class="emoji button" style="margin-top: 10px"></a>
+            </div>
+            <div class="row">
+                <a (click)="jokeRating(2, joke.jokeId)"><img src="../../assets/2.png" class="emoji button" style="margin-top: 10px"></a>
+            </div>
+            <div class="row">
+                <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
             </div>
           </div>
           <div class="col-sm-1">
+            <h6>Rating Avg</h6>
             <p>{{joke.avgRating}}</p>
           </div>
           <div class="col-sm-9">
