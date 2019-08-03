@@ -77,5 +77,7 @@ export class HomeComponent implements OnInit {
       alert('There was in issue rating the joke :(');
     }
 
+    this.getHomeFeedJokes();
+
   }
 }
