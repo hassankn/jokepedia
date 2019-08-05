@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   categories: any = [];
   feedCategory: any = '';
 
+  sortFilter: any = '';
+
   postJokeCategory: any = '';
   postJokeText: any = '';
 
@@ -51,7 +53,7 @@ export class HomeComponent implements OnInit {
     newJoke.categoryId = this.postJokeCategory;
 
     const res = await this.jokeService.postJoke(newJoke);
-    if (res['text'] === newJoke.text) {
+    if (res.text === newJoke.text) {
       alert('Joke Inserted! :)');
     } else {
       alert('There was in issue inserting the joke :(');
@@ -71,7 +73,7 @@ export class HomeComponent implements OnInit {
 
     const res = await this.jokeService.rateJoke(rate);
     console.log(res);
-    if (res['joke'].jokeId === jokeId && res['rating'] === ratingScore) {
+    if (res.joke.jokeId === jokeId && res.rating === ratingScore) {
       alert('Joke Rated! :)');
     } else {
       alert('There was in issue rating the joke :(');
@@ -79,5 +81,26 @@ export class HomeComponent implements OnInit {
 
     this.getHomeFeedJokes();
 
+  }
+
+  async sortJokes(event) {
+    console.log(event);
+    switch (event.target.value) {
+      case 'Hot':
+        this.jokes = this.getHomeFeedJokes();
+        break;
+      case 'Month':
+        this.jokes = await this.jokeService.getTopOfTheMonth();
+        break;
+      case 'Year':
+        this.jokes = await this.jokeService.getTopOfTheYear();
+        break;
+      case 'AllTime':
+        this.jokes = await this.jokeService.getTopOfAllTime();
+    }
+  }
+
+  async getTopOfTheMonth() {
+    this.jokes = await this.jokeService.getTopOfTheMonth();
   }
 }

@@ -20,11 +20,13 @@
     <div class="flex-item">
       <div class="form-group" id="top">
         <label for="exampleFormControlSelect1">Sort</label>
-        <select class="form-control">
-          <option>Hot</option>
-          <option>Top of the Month</option>
-          <option>Top of the Year</option>
-          <option>Top All-Time</option>
+        <select class="form-control" [(ngModel)] = "sortFilter"
+        (change)="sortJokes($event)"
+        >
+          <option value="Hot">Hot</option>
+          <option value="Month">Top of the Month</option>
+          <option value="Year">Top of the Year</option>
+          <option value="AllTime">Top All-Time</option>
         </select>
       </div>
     </div>

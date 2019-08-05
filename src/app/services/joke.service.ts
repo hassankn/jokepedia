@@ -25,4 +25,16 @@ export class JokeService {
   async rateJoke(newRate: any) {
     return await this.httpClient.post('http://localhost:3000/user/1/rateJoke', {newRate}).toPromise();
   }
+
+  async getTopOfTheMonth(){
+    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfMonth').toPromise();
+  }
+
+  async getTopOfTheYear(){
+    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfYear').toPromise();
+  }
+
+  async getTopOfAllTime(){
+    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfAllTime').toPromise();
+  }
 }
