@@ -65,7 +65,7 @@
             <p>{{joke.avgRating}}</p>
           </div>
           <div class="col-sm-9">
-            <label style="color: #844444">{{joke.username}}</label>
+            <a routerLink="/profile/{{joke.userId}}"><label style="color: #844444">{{joke.username}}</label></a> 
             <p>{{joke.text}}</p>
             <!-- Use Angular's date pipe to format date -->
             <label>{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>

@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   async getHomeFeedJokes() {
-    this.jokes = await this.userService.getTenRandomJokes();
+    this.jokes = await this.jokeService.getTenRandomJokes();
 
     console.log(this.jokes);
   }
@@ -96,7 +96,11 @@ export class HomeComponent implements OnInit {
   }
 
   async searchByUserName() {
-      this.jokes = await this.jokeService.searchJokesByUsername(this.searchText);
+    this.jokes = await this.jokeService.searchJokesByUsername(this.searchText);
+  }
+
+  async goToUserProfile(userId: number) {
+    console.log(us
   }
 
 }
