@@ -37,4 +37,8 @@ export class JokeService {
   async getTopOfAllTime(){
     return await this.httpClient.get('http://localhost:3000/user/getTopTenOfAllTime').toPromise();
   }
+
+  async searchJokesByUsername(username) {
+    return await this.httpClient.get('http://localhost:3000/user/getJokesForUsername/' + username).toPromise();
+  }
 }

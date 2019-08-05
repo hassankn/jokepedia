@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
 
   sortFilter: any = '';
 
+  searchText: any = '';
+
   postJokeCategory: any = '';
   postJokeText: any = '';
 
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit {
     newJoke.categoryId = this.postJokeCategory;
 
     const res = await this.jokeService.postJoke(newJoke);
-    if (res.text === newJoke.text) {
+    if (res['text'] === newJoke.text) {
       alert('Joke Inserted! :)');
     } else {
       alert('There was in issue inserting the joke :(');
@@ -73,7 +75,7 @@ export class HomeComponent implements OnInit {
 
     const res = await this.jokeService.rateJoke(rate);
     console.log(res);
-    if (res.joke.jokeId === jokeId && res.rating === ratingScore) {
+    if (res['joke'].jokeId === jokeId && res['rating'] === ratingScore) {
       alert('Joke Rated! :)');
     } else {
       alert('There was in issue rating the joke :(');
@@ -100,7 +102,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async getTopOfTheMonth() {
-    this.jokes = await this.jokeService.getTopOfTheMonth();
+  async searchByUserName() {
+      this.jokes = await this.jokeService.searchJokesByUsername(this.searchText);
   }
+
 }

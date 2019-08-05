@@ -12,11 +12,18 @@
       </div>
     </div>
     <div class="flex-item">
+
       <div class="form-group" id="user">
         <label for="exampleFormControlSelect1">User</label>
-        <input type="text" class="form-control" aria-describedby="userASearch" placeholder="Username...">
+        <div class="search-div">
+        <input type="text" class="form-control mr-2" [(ngModel)]="searchText"
+               aria-describedby="userASearch" placeholder="Username...">
+          <i (click)="searchByUserName()"
+            class="fa fa-2x fa-search"></i>
+        </div>
       </div>
-    </div>
+
+      </div>
     <div class="flex-item">
       <div class="form-group" id="top">
         <label for="exampleFormControlSelect1">Sort</label>
