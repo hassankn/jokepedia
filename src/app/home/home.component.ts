@@ -98,9 +98,4 @@ export class HomeComponent implements OnInit {
   async searchByUserName() {
     this.jokes = await this.jokeService.searchJokesByUsername(this.searchText);
   }
-
-  async goToUserProfile(userId: number) {
-    console.log(us
-  }
-
 }
