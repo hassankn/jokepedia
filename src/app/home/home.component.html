@@ -67,7 +67,8 @@
           <div class="col-sm-9">
             <label style="color: #844444">{{joke.username}}</label>
             <p>{{joke.text}}</p>
-            <label>{{joke.relativeTime}}</label>
+            <!-- Use Angular's date pipe to format date -->
+            <label>{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
           </div>
           <div class="col-sm-1">
             <img src="../../assets/options.png" id="options">

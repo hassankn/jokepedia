@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { JokeService } from '../services/joke.service';
-import * as moment from 'moment';
-
 
 @Component({
   selector: 'app-home',
@@ -40,11 +38,6 @@ export class HomeComponent implements OnInit {
 
   async getHomeFeedJokes() {
     this.jokes = await this.userService.getTenRandomJokes();
-
-    this.jokes = this.jokes.map((joke: any) => ({
-      ...joke,
-      relativeTime: moment(joke.timeStamp).format('MMMM Do YYYY, h:mm a'),
-    }));
 
     console.log(this.jokes);
   }
