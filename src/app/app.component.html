@@ -24,8 +24,12 @@
   <h3 *ngIf="getLoggedInUser() !== null">Hi {{getLoggedInUser().username}}! 🤣</h3>
 
   <div class="user-icon float-right">
+    <button *ngIf="getLoggedInUser() === null"
+      class="btn btn-success m-2 rounded-bottom profile-button" routerLink="/login">LOGIN</button>
+
     <button *ngIf="getLoggedInUser() !== null" (click)="logout()"
       class="btn btn-danger m-2 rounded-bottom profile-button" routerLink="/login">LOGOUT</button>
+      
     <button *ngIf="getLoggedInUser() !== null" class="btn btn-primary rounded-bottom profile-button"
       routerLink="/profile">PROFILE</button>
   </div>
