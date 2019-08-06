@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   async login() {
     const user = { username: this.username, password: this.password };
 
-    this.userService.login(user);
+    await this.userService.login(user);
 
     if (this.userService.getLoggedInUser() !== null) {
       this.router.navigate(['/home']);
