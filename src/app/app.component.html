@@ -17,15 +17,18 @@
 
 <!--If we ever want to use a more robust navbar here's a template for a good one! ^^^-->
 <nav class="navbar navbar-expand-md navbar-light" id="home-banner">
-  <button class="btn rounded-bottom text-white"
-          routerLink="/home"
-  ><h1>JokePedia</h1></button>
+  <button class="btn rounded-bottom text-white" routerLink="/home">
+    <h1>JokePedia</h1>
+  </button>
 
-    <div class="user-icon float-right">
-      <button class="btn btn-primary rounded-bottom profile-button"
-              routerLink="/profile"
-      >PROFILE</button>
-    </div>
+  <h3 *ngIf="getLoggedInUser() !== null">Hi {{getLoggedInUser().username}}! 🤣</h3>
+
+  <div class="user-icon float-right">
+    <button *ngIf="getLoggedInUser() !== null" 
+    (click)="logout()" class="btn btn-danger m-2 rounded-bottom profile-button" 
+    routerLink="/login">LOGOUT</button>
+    <button class="btn btn-primary rounded-bottom profile-button" routerLink="/profile">PROFILE</button>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
