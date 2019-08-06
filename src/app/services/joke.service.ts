@@ -46,4 +46,9 @@ export class JokeService {
     const res = await this.httpClient.get('http://localhost:3000/user/getTenRandomJokes').toPromise();
     return res;
   }
+
+  async getUserHomeFeedJokes(userId: number) {
+    const res =  await this.httpClient.get('http://localhost:3000/user/' + userId + '/getCustomizedJokes/').toPromise();
+    return res;
+  }
 }
