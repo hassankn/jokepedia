@@ -43,24 +43,8 @@
     <ng-container *ngFor='let joke of this.jokes'>
       <div class="joke">
         <div class="row">
-          <div class="col-sm-1">
-            <div class="row">
-              <a (click)="jokeRating(5, joke.jokeId)"><img src="../../assets/5.png" class="emoji"></a>
-            </div>
-            <div class="row">
-                <a (click)="jokeRating(4, joke.jokeId)"><img src="../../assets/4.png" class="emoji button" style="margin-top: 10px"></a>
-            </div>
-            <div class="row">
-                <a (click)="jokeRating(3, joke.jokeId)"><img src="../../assets/3.png" class="emoji button" style="margin-top: 10px"></a>
-            </div>
-            <div class="row">
-                <a (click)="jokeRating(2, joke.jokeId)"><img src="../../assets/2.png" class="emoji button" style="margin-top: 10px"></a>
-            </div>
-            <div class="row">
-                <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
-            </div>
-          </div>
-          <div class="col-sm-1">
+
+          <div class="col-sm-2">
             <h6>Rating Avg</h6>
             <p>{{joke.avgRating}}</p>
           </div>
@@ -68,11 +52,29 @@
             <label style="color: #844444">{{joke.username}}</label>
             <p>{{joke.text}}</p>
             <!-- Use Angular's date pipe to format date -->
-            <label>{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
           </div>
           <div class="col-sm-1">
             <img src="../../assets/options.png" id="options">
           </div>
+        </div>
+        <div class="row">
+          <div class="row">
+            <a (click)="jokeRating(5, joke.jokeId)"><img src="../../assets/5.png" class="emoji"></a>
+          </div>
+          <div class="row">
+            <a (click)="jokeRating(4, joke.jokeId)"><img src="../../assets/4.png" class="emoji button" style="margin-top: 10px"></a>
+          </div>
+          <div class="row">
+            <a (click)="jokeRating(3, joke.jokeId)"><img src="../../assets/3.png" class="emoji button" style="margin-top: 10px"></a>
+          </div>
+          <div class="row">
+            <a (click)="jokeRating(2, joke.jokeId)"><img src="../../assets/2.png" class="emoji button" style="margin-top: 10px"></a>
+          </div>
+          <div class="row">
+            <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
+          </div>
+          <!-- Use Angular's date pipe to format date -->
+          <label style="margin-left: auto">{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
         </div>
       </div>
     </ng-container>
@@ -85,7 +87,7 @@
   <form id="searchBar" style="padding-bottom: 10px">
     <div class="form-group">
       <label for="search">Joke text</label>
-      <input name="enterJoke" [(ngModel)]="this.postJokeText" 
+      <input name="enterJoke" [(ngModel)]="this.postJokeText"
       type="text" class="form-control" placeholder="Enter joke...">
     </div>
     <div class="form-group" id="categories">

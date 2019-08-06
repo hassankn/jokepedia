@@ -21,6 +21,15 @@
   border-radius: 8px;
 }
 
+#categories-card{
+  background: #005efe;
+  margin-left: auto;
+  margin-right: auto;
+  height: 5rem;
+  width: 75%;
+  border-radius: 8px;
+}
+
 #jokes-length{
   color: darkred;
 }

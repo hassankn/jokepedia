@@ -14,6 +14,11 @@ export class UserService {
     return await this.httpClient.get('http://localhost:3000/user/1/getTopJokesPosted').toPromise();
   }
 
+  async getFavoriteCategories(): Promise<any> {
+    return await this.httpClient.get('http://localhost:3000/user/1/getFavoriteCategories').toPromise();
+  }
+
+
   async getUserJokesCount(userId: number) {
      return await this.httpClient.get('http://localhost:3000/user/1/userJokesCount').toPromise();
   }
