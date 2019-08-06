@@ -10,21 +10,20 @@ export class UserService {
   constructor(private readonly httpClient: HttpClient) {
   }
 
-  async getUserJokes(): Promise<any> {
-    return await this.httpClient.get('http://localhost:3000/user/1/getTopJokesPosted').toPromise();
+  async getUserJokes(userId: number): Promise<any> {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/getTopJokesPosted').toPromise();
   }
 
-  async getFavoriteCategories(): Promise<any> {
-    return await this.httpClient.get('http://localhost:3000/user/1/getFavoriteCategories').toPromise();
+  async getFavoriteCategories(userId: number): Promise<any> {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/getFavoriteCategories').toPromise();
   }
-
 
   async getUserJokesCount(userId: number) {
-    return await this.httpClient.get('http://localhost:3000/user/1/userJokesCount').toPromise();
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/userJokesCount').toPromise();
   }
 
-  async getAverageOfJokesPosted() {
-    return await this.httpClient.get('http://localhost:3000/user/1/averageOfJokesPosted').toPromise();
+  async getAverageOfJokesPosted(userId: number) {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/averageOfJokesPosted').toPromise();
   }
 
   async login(user: any) {
