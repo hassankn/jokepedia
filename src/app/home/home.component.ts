@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     if (this.userService.getLoggedInUser() == null) {
       this.jokes = this.jokeService.getTenRandomJokes();
     } else {
-      const userId = this.userService.getLoggedInUser().userId;
+      const userId = await this.userService.getLoggedInUser().userId;
       this.jokes = await this.jokeService.getUserHomeFeedJokes(userId);
     }
     console.log(this.jokes);
