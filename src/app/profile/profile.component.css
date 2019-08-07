@@ -1,6 +1,38 @@
 #profile-container{
   height: 100%;
-  background: #00aab8;
+  background: linear-gradient(-45deg, #e73c7e, #274ad5, #3594d5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#top-jokes-card{
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+}
+
+#profile-row{
+  height: inherit;
+}
+
+#profile-username{
+  background-color: black;
+  height: 100%;
 }
 
 #joke-stats-card{
@@ -34,10 +66,18 @@
   color: darkred;
 }
 
+#profile-img{
+  margin-left:20%;
+  height: 180px;
+}
+
+#username{
+
+}
+
 .joke {
   margin:10px;
-
-  border-radius: 25px;
+  border-radius: 7px;
   border: 2px solid #ff830a;
   padding: 20px;
   background-color: #fff9e6;
@@ -45,5 +85,10 @@
 
 #profile-joke-feed{
   overflow-y: scroll;
-  height: 300px;
+  max-height: 300px;
+  height: auto;
+}
+
+#joke-list{
+  min-height:101%;
 }

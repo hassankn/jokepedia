@@ -42,6 +42,7 @@ export class ProfileComponent implements OnInit {
 
   async getUserJokes(id) {
     this.userJokes = await this.userService.getUserJokes(id);
+    console.log('USER JOKES');
     console.log(this.userJokes);
   }
 
