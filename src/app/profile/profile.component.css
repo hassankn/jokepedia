@@ -42,3 +42,8 @@
   padding: 20px;
   background-color: #fff9e6;
 }
+
+#profile-joke-feed{
+  overflow-y: scroll;
+  height: 300px;
+}
