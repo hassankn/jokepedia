@@ -38,9 +38,9 @@ export class HomeComponent implements OnInit {
   async getHomeFeedJokes() {
 
     if (this.userService.getLoggedInUser() == null) {
-      this.jokeService.getTenRandomJokes();
+      this.jokes = await this.jokeService.getTenRandomJokes();
     } else {
-      const userId = this.userService.getLoggedInUser().userId;
+      const userId = await this.userService.getLoggedInUser().userId;
       this.jokes = await this.jokeService.getUserHomeFeedJokes(userId);
     }
     console.log(this.jokes);
