@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
   postJokeCategory: any = '';
   postJokeText: any = '';
 
-
   ngOnInit() {
     this.getHomeFeedJokes();
     this.getCategories();
@@ -37,8 +36,13 @@ export class HomeComponent implements OnInit {
   }
 
   async getHomeFeedJokes() {
-    this.jokes = await this.jokeService.getTenRandomJokes();
 
+    if (this.userService.getLoggedInUser() == null) {
+      this.jokeService.getTenRandomJokes();
+    } else {
+      const userId = this.userService.getLoggedInUser().userId;
+      this.jokes = await this.jokeService.getUserHomeFeedJokes(userId);
+    }
     console.log(this.jokes);
   }
 
