@@ -1,6 +1,6 @@
 <div id="profile-container" class="container-fluid">
   <div class="flex-row text-center">
-    <h1>PROFILE</h1>
+    <h1>{{this.user.name}}'s PROFILE</h1>
   </div>
   <div class="row text-center pr-3 pl-3 mb-4">
     <div class="col">
@@ -13,7 +13,6 @@
         <div *ngFor="let category of favoriteCategories">
           <div>{{category.name}}</div>
         </div>
-
 
       </div>
     </div>

@@ -10,6 +10,10 @@ export class UserService {
   constructor(private readonly httpClient: HttpClient) {
   }
 
+  async getUser(userId: number): Promise<any> {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/fetchUser').toPromise();
+  }
+
   async getUserJokes(userId: number): Promise<any> {
     return await this.httpClient.get('http://localhost:3000/user/' + userId + '/getTopJokesPosted').toPromise();
   }
