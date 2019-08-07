@@ -10,6 +10,7 @@
       <label>Password</label>
       <input name="password" [(ngModel)]="this.password" type="password" class="form-control" placeholder="Password">
     </div>
-    <button type="submit" (click)="login()" class="btn btn-primary">Submit</button>
+    <button type="submit" (click)="login()" class="btn btn-primary">Login</button>
+    <button routerLink='/register' type="submit" class="btn btn-success m-2">Register</button>
   </form>
 </div>

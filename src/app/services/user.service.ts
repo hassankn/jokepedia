@@ -45,6 +45,18 @@ export class UserService {
     localStorage.clear();
   }
 
+  async register(user: any) {
+    const res = await this.httpClient.post('http://localhost:3000/user/register', { user }).toPromise();
+
+    console.log(res);
+
+    if (res === null) {
+      alert('This username is already taken! Please');
+    } else {
+      localStorage.setItem('user', JSON.stringify(res));
+    }
+  }
+
   // null if user not logged in. Otherwise a JSON represntation of user
   getLoggedInUser() {
     if (localStorage.getItem('user') !== null) {
