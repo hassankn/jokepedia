@@ -1,6 +1,6 @@
 <div id="profile-container" class="container-fluid">
   <div class="flex-row text-center">
-    <h1>PROFILE</h1>
+    <h1>{{this.user.name}}'s PROFILE</h1>
   </div>
   <div class="row text-center pr-3 pl-3 mb-4">
     <div class="col">
@@ -14,13 +14,13 @@
           <div>{{category.name}}</div>
         </div>
 
-
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <div class="card-header">Your Top 5 Jokes</div>
-        <div class="card-body">
+        <div class="card-header">Top 5 Jokes</div>
+        <div id="profile-joke-feed"
+          class="card-body">
         <div *ngFor="let joke of userJokes">
           <div class="joke">"{{joke.text}}"</div>
         </div>

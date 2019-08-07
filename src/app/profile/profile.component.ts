@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,36 +10,52 @@ import { UserService } from '../services/user.service';
 export class ProfileComponent implements OnInit {
 
   constructor(
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    private route: ActivatedRoute
+  ) {
+  }
 
+  user: string;
   userJokes = [];
   userJokesCount: any;
   userAverageOfJokesPosted: any;
   favoriteCategories = [];
 
   ngOnInit() {
-    this.getUserJokes();
-    this.getUserJokesCount();
-    this.getUserAverageRating();
-    this.getFavoriteCategories();
+    let id = this.route.snapshot.paramMap.get('userId');
+    console.log(id);
+    if (id === null) {
+      id = this.userService.getLoggedInUser().userId;
+    }
+    this.getUser(id);
+    this.getUserJokes(id);
+    this.getUserJokesCount(id);
+    this.getUserAverageRating(id);
+    this.getFavoriteCategories(id);
   }
 
-  async getUserJokes() {
-    this.userJokes = await this.userService.getUserJokes();
+  async getUser(id) {
+    this.user = await this.userService.getUser(id);
+    this.user = this.user[0];
+    console.log(this.user);
+  }
+
+  async getUserJokes(id) {
+    this.userJokes = await this.userService.getUserJokes(id);
     console.log(this.userJokes);
   }
 
-  async getFavoriteCategories() {
-    this.favoriteCategories = await this.userService.getFavoriteCategories();
+  async getFavoriteCategories(id) {
+    this.favoriteCategories = await this.userService.getFavoriteCategories(id);
     console.log(this.favoriteCategories);
   }
 
-  async getUserJokesCount() {
-    this.userJokesCount = await this.userService.getUserJokesCount(1);
+  async getUserJokesCount(id) {
+
+    this.userJokesCount = await this.userService.getUserJokesCount(id);
   }
 
-  async getUserAverageRating() {
-    this.userAverageOfJokesPosted = await this.userService.getAverageOfJokesPosted();
+  async getUserAverageRating(id) {
+    this.userAverageOfJokesPosted = await this.userService.getAverageOfJokesPosted(id);
   }
 }
