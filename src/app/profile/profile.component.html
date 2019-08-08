@@ -34,18 +34,23 @@
     <div class="row mt-4">
       <div class="col">
         <div class="card text-center stat-card" >
-          <h5 class=" text-center stat-text">Total Jokes posted: <span class="jokes-length">{{this.userJokesCount}}</span></h5>
+          <div id="stat-div">
+
+            <h5 class="stat-text text-center">Total Jokes posted: <span class="jokes-length">{{this.userJokesCount}}</span></h5>
+            <h5 class="stat-text text-center">Average Joke Rating: <span class="jokes-length">{{this.userAverageOfJokesPosted}}</span></h5>
+          </div>
         </div>
       </div>
       <div class="col">
-        <div class="card text-center stat-card">
-          <h5 class="text-center stat-text">Average Joke Rating: <span class="jokes-length">{{this.userAverageOfJokesPosted}}</span></h5>
+        <div class="card cat-card">
+          <div class="card-header">
+          <h5 class="text-center">Favorite Categories</h5>
+          </div>
+          <div class="card-body">
         </div>
-      </div>
-      <div class="col">
-        <div class="card-header">Favorite Categories</div>
-        <div *ngFor="let category of favoriteCategories">
-          <div>{{category.name}}</div>
+        <h5 *ngFor="let category of favoriteCategories">
+          {{category.name}}
+        </h5>
         </div>
       </div>
     </div>
