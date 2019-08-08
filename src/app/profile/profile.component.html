@@ -9,7 +9,7 @@
     <h1 id="username" class="text-white text-center">@{{this.user.username}}</h1>
   </div>
   <div class="col-9">
-    <div class="row mb-2">
+    <div class="row mb-5">
       <div class="card mt-4" id="top-jokes-card">
         <div class="card-header">
           <h2 class="text-center text-danger font-weight-bold">Top 10 Jokes</h2>
@@ -31,8 +31,23 @@
         </div>
       </div>
     </div>
-    <div class="row">
-
+    <div class="row mt-4">
+      <div class="col">
+        <div class="card text-center stat-card" >
+          <h5 class=" text-center stat-text">Total Jokes posted: <span class="jokes-length">{{this.userJokesCount}}</span></h5>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center stat-card">
+          <h5 class="text-center stat-text">Average Joke Rating: <span class="jokes-length">{{this.userAverageOfJokesPosted}}</span></h5>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card-header">Favorite Categories</div>
+        <div *ngFor="let category of favoriteCategories">
+          <div>{{category.name}}</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -58,12 +58,29 @@
   margin-left: auto;
   margin-right: auto;
   height: 5rem;
-  width: 75%;
+  width: 80%;
   border-radius: 8px;
 }
 
-#jokes-length{
-  color: darkred;
+.stat-card{
+  height: 100px;
+  position: relative;
+  background: rgb(0,24,255);
+  background: radial-gradient(circle, rgba(0,24,255,1) 0%, rgba(8,35,245,1) 100%);
+  border-radius: 25px;
+}
+
+.stat-text{
+  position: absolute;               /* 2 */
+  top: 50%;                         /* 3 */
+  transform: translate(0, -50%);
+  margin-left: 5%;
+  color: whitesmoke;
+}
+
+.jokes-length{
+  font-weight: bold;
+  color: yellow;
 }
 
 #profile-img{
