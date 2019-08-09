@@ -54,6 +54,6 @@ export class JokeService {
 
   async reportJoke(report:any) {
     console.log(report)
-    return await this.httpClient.post('http://localhost:3000/user/report', {report});
+    return await this.httpClient.post('http://localhost:3000/user/report', {report}).toPromise();
   }
 }
