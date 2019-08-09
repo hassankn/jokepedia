@@ -75,6 +75,8 @@
           </div>
           <div class="row">
             <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
+            <button (click)="reportJoke(joke.jokeId)" type="button" class="btn btn-danger btn-sm btn-block">REPORT</button>
+
           </div>
           <!-- Use Angular's date pipe to format date -->
           <label id='timestamp' style="margin-left: auto">{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>

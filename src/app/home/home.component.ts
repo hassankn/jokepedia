@@ -61,6 +61,18 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
+  async reportJoke(jokeId: number) {
+    const userId = await this.userService.getLoggedInUser().userId;
+    console.log(jokeId + " " + userId)
+
+    const report: any = {};
+    report.jokeId = jokeId;
+    report.userId = userId
+    const res = await this.jokeService.reportJoke(report);
+    console.log(res)
+  }
+
   async onCategoryChange() {
     this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
   }

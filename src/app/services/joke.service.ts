@@ -51,4 +51,9 @@ export class JokeService {
     const res =  await this.httpClient.get('http://localhost:3000/user/' + userId + '/getHomeFeedJokes/').toPromise();
     return res;
   }
+
+  async reportJoke(report:any) {
+    console.log(report)
+    return await this.httpClient.post('http://localhost:3000/user/report', {report});
+  }
 }
