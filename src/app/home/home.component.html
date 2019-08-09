@@ -78,8 +78,13 @@
             <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
 
           </div>
+
           <!-- Use Angular's date pipe to format date -->
           <label id='timestamp' style="margin-left: auto">{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
+        </div>
+        <div *ngIf='userLoggedIn == null'>
+          <p><a routerLink="/login">Login</a> or <a routerLink="/register">register</a> to rate jokes!</p>
+
         </div>
       </div>
     </ng-container>
