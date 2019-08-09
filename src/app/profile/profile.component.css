@@ -66,7 +66,7 @@
 .stat-card{
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 200px;
   position: relative;
   background: rgb(122, 152, 255);
   /*background: radial-gradient(circle, rgba(0,24,255,1) 0%, rgba(8,35,245,1) 100%);*/
@@ -76,7 +76,7 @@
 .cat-card{
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 200px;
   position: relative;
   background: rgb(122, 152, 255);
   /*background: radial-gradient(circle, rgba(0,24,255,1) 0%, rgba(8,35,245,1) 100%);*/
@@ -143,4 +143,8 @@
 
 #joke-list{
   min-height:101%;
+}
+
+#cat-name {
+  color:white;
 }

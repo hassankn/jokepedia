@@ -93,19 +93,23 @@
 
             <h5 class="stat-text text-center">Total Jokes posted: <span class="jokes-length">{{this.userJokesCount}}</span></h5>
             <h5 class="stat-text text-center">Average Joke Rating: <span class="jokes-length">{{this.userAverageOfJokesPosted}}</span></h5>
+            <h5 class="stat-text text-center">Followers: <span class="jokes-length">{{this.followers.length}}</span></h5>
+            <h5 class="stat-text text-center">Followees: <span class="jokes-length">{{this.followees.length}}</span></h5>
+
           </div>
         </div>
       </div>
       <div class="col">
         <div class="card cat-card">
           <div class="card-header">
-          <h4 class="text-center font-weight-bolder">Favorite Categories</h4>
+          <h4 class="text-center font-weight-bolder" id="cat-name">Favorite Categories</h4>
           </div>
           <div class="card-body">
+            <h5 *ngFor="let category of favoriteCategories" style="text-align: center" id="cat-name">
+              {{category.name}}
+            </h5>
         </div>
-        <h5 *ngFor="let category of favoriteCategories">
-          {{category.name}}
-        </h5>
+
         </div>
       </div>
     </div>
