@@ -41,13 +41,10 @@ export class HomeComponent implements OnInit {
 
     if (this.userService.getLoggedInUser() == null) {
       this.jokes = await this.jokeService.getTenRandomJokes();
-      console.log("no one is logged in")
-      console.log(this.jokes)
     } else {
       const userId = await this.userService.getLoggedInUser().userId;
       this.jokes = await this.jokeService.getUserHomeFeedJokes(userId);
     }
-    console.log(this.jokes);
   }
 
   async postJoke() {
@@ -72,9 +69,7 @@ export class HomeComponent implements OnInit {
 
     const report: any = {};
     report.jokeId = jokeId;
-    report.userId = userId
-    console.log("REPORT IS")
-    console.log(report)
+    report.userId = userId;
     const res = await this.jokeService.reportJoke(report);
     alert("You have reported this joke!");
 
