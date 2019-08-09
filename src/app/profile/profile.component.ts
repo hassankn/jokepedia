@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   user: string;
   userJokes = [];
+  loggedInUser: any;
   userJokesCount: any;
   userAverageOfJokesPosted: any;
   favoriteCategories = [];
@@ -24,10 +25,15 @@ export class ProfileComponent implements OnInit {
   followers: any;
   followees: any;
 
+  followFlag: number;
+
   ngOnInit() {
+    this.followFlag = 0;
+    this.loggedInUser = this.userService.getLoggedInUser();
     let id = this.route.snapshot.paramMap.get('userId');
     console.log(id);
     if (id === null) {
+
       id = this.userService.getLoggedInUser().userId;
     }
     this.getUser(id);
@@ -67,6 +73,11 @@ export class ProfileComponent implements OnInit {
 
   async getUserFollowers(id) {
     this.followers = await this.userService.getFollowers(id);
+    this.followers.map(follower => {
+      if (follower.username === this.loggedInUser['username']) {
+        this.followFlag = 1;
+      }
+    });
   }
 
   async getUserFollowees(id) {

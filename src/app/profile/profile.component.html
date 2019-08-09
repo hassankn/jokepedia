@@ -10,9 +10,19 @@
     </div>
     <h1 id="username" class="text-white text-center">{{this.user.name}}</h1>
     <div class="text-center">
-    <button class="btn btn-success follow-btn">
+      <div *ngIf="followFlag===1">
+      <button
+              class="btn btn-success follow-btn"
+      >
+        <h5 class="pt-2 text-white font-weight-bold">Following</h5>
+      </button>
+      </div>
+      <div *ngIf="followFlag === 0">
+    <button
+      class="btn btn-primary follow-btn">
       <h5 class="pt-2 text-white font-weight-bold">Follow</h5>
     </button>
+      </div>
     </div>
     <div class="row mt-4">
       <div class="col">
