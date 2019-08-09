@@ -103,8 +103,17 @@
 }
 
 #profile-img{
-  margin-left:20%;
+  margin-left:28.5%;
   height: 180px;
+}
+
+.follow-btn{
+  width: 40%;
+}
+
+.follow-card{
+  height: 180px;
+  overflow-y: scroll;
 }
 
 #username{
