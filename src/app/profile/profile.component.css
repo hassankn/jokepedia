@@ -33,6 +33,7 @@
 #profile-username{
   background-color: black;
   height: 100%;
+  width: 100%;
 }
 
 #joke-stats-card{
@@ -103,8 +104,14 @@
 }
 
 #profile-img{
-  margin-left:28.5%;
+  margin-left:10%;
   height: 180px;
+  border-radius: 25px;
+}
+
+.profile-img-div{
+  width: 50%;
+  margin: 0 auto;
 }
 
 .follow-btn{
