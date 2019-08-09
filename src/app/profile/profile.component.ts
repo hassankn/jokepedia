@@ -21,6 +21,9 @@ export class ProfileComponent implements OnInit {
   userAverageOfJokesPosted: any;
   favoriteCategories = [];
 
+  followers: any;
+  followees: any;
+
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('userId');
     console.log(id);
@@ -32,6 +35,8 @@ export class ProfileComponent implements OnInit {
     this.getUserJokesCount(id);
     this.getUserAverageRating(id);
     this.getFavoriteCategories(id);
+    this.getUserFollowers(id);
+    this.getUserFollowees(id);
   }
 
   async getUser(id) {
@@ -58,5 +63,13 @@ export class ProfileComponent implements OnInit {
 
   async getUserAverageRating(id) {
     this.userAverageOfJokesPosted = await this.userService.getAverageOfJokesPosted(id);
+  }
+
+  async getUserFollowers(id) {
+    this.followers = await this.userService.getFollowers(id);
+  }
+
+  async getUserFollowees(id) {
+    this.followees = await this.userService.getFollowees(id);
   }
 }

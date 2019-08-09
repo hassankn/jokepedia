@@ -19,7 +19,15 @@
             <h5>Followers</h5>
           </div>
           <div class="card-body text-center follow-card">
-            Placeholder
+            <ul class="list-group">
+              <li class="list-group-item rounded-lg bg-warning mb-1"
+                *ngFor="let follower of followers">
+                <a class="text-primary font-weight-bold"
+                  href="/profile/{{follower.userId}}">
+                {{follower.name}}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -29,7 +37,15 @@
             <h5>Following</h5>
           </div>
           <div class="card-body text-center follow-card">
-            Placeholder
+            <ul class="list-group">
+              <li class="list-group-item rounded-lg bg-warning mb-1"
+                  *ngFor="let followee of followees">
+                <a class="text-primary font-weight-bold"
+                  href="/profile/{{followee.userId}}">
+                {{followee.name}}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
