@@ -57,7 +57,8 @@
             <!-- Use Angular's date pipe to format date -->
           </div>
           <div class="col-sm-1">
-            <img src="../../assets/options.png" id="options">
+              <img src="../../assets/report.png" id="options"  *ngIf='userLoggedIn !== null'
+                   title="Report this joke" (click)="reportJoke(joke.jokeId)">
           </div>
         </div>
         <div class="row">
@@ -75,7 +76,6 @@
           </div>
           <div class="row">
             <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
-            <button (click)="reportJoke(joke.jokeId)" type="button" class="btn btn-danger btn-sm btn-block">REPORT</button>
 
           </div>
           <!-- Use Angular's date pipe to format date -->

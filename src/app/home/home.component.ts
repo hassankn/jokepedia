@@ -76,6 +76,8 @@ export class HomeComponent implements OnInit {
     console.log("REPORT IS")
     console.log(report)
     const res = await this.jokeService.reportJoke(report);
+    alert("You have reported this joke!");
+
   }
 
   async onCategoryChange() {
