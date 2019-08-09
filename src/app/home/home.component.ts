@@ -24,10 +24,12 @@ export class HomeComponent implements OnInit {
 
   postJokeCategory: any = '';
   postJokeText: any = '';
+  userLoggedIn: boolean;
 
   ngOnInit() {
     this.getHomeFeedJokes();
     this.getCategories();
+    this.userLoggedIn = this.userService.getLoggedInUser();
   }
 
   async getCategories() {
