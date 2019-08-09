@@ -26,14 +26,17 @@ export class ProfileComponent implements OnInit {
   followees: any;
 
   followFlag: number;
+  onUsersProfileFlag: number;
 
   ngOnInit() {
     this.followFlag = 0;
+    this.onUsersProfileFlag = 0;
     this.loggedInUser = this.userService.getLoggedInUser();
     let id = this.route.snapshot.paramMap.get('userId');
     console.log(id);
     if (id === null) {
-
+      console.log('On user profile page');
+      this.onUsersProfileFlag = 1;
       id = this.userService.getLoggedInUser().userId;
     }
     this.getUser(id);
