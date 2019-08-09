@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   ) {
   }
 
-  user: string;
+  user: any;
   userJokes = [];
   loggedInUser: any;
   userJokesCount: any;
