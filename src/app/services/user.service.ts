@@ -73,4 +73,20 @@ export class UserService {
       return null;
     }
   }
+
+  async followUser(followerId, followeeId) {
+    await this.httpClient.post('http://localhost:3000/user/followUser',
+      {
+        followerId,
+        followeeId
+    }).toPromise();
+  }
+
+  async unfollowUser(followerId, followeeId){
+    await this.httpClient.post('http://localhost:3000/user/unfollowUser',
+      {
+        followerId,
+        followeeId
+      }).toPromise();
+  }
 }

@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   userJokesCount: any;
   userAverageOfJokesPosted: any;
   favoriteCategories = [];
+  profileId: any;
 
   followers: any;
   followees: any;
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
     this.onUsersProfileFlag = 0;
     this.loggedInUser = this.userService.getLoggedInUser();
     let id = this.route.snapshot.paramMap.get('userId');
+    this.profileId = id;
     console.log(id);
     if (id === null) {
       console.log('On user profile page');
@@ -85,5 +87,19 @@ export class ProfileComponent implements OnInit {
 
   async getUserFollowees(id) {
     this.followees = await this.userService.getFollowees(id);
+  }
+
+  async followUser() {
+    console.log('following' + this.profileId + ' by ' + this.loggedInUser['userId']);
+    await this.userService.followUser(this.loggedInUser['userId'], this.profileId);
+    this.followFlag = 1;
+    await this.getUserFollowers(this.profileId);
+  }
+
+  async unfollowUser() {
+    console.log('Unfollowing' + this.profileId + ' by ' + this.loggedInUser['userId']);
+    await this.userService.unfollowUser(this.loggedInUser['userId'], this.profileId);
+    this.followFlag = 0;
+    await this.getUserFollowers(this.profileId);
   }
 }
