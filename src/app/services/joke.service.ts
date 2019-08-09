@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
+import serverConfig from '../serverConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -12,48 +12,47 @@ export class JokeService {
   }
 
   async getJokesForCategory(category: string) {
-    return await this.httpClient.get('http://localhost:3000/user/getJokesForCategory/' + category).toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + 'getJokesForCategory/' + category).toPromise();
   }
 
   async getCategories() {
-    return await this.httpClient.get('http://localhost:3000/user/getCategories').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + 'getCategories').toPromise();
   }
 
   async postJoke(userId: number, newJoke: any) {
-    return await this.httpClient.post('http://localhost:3000/user/' + userId + '/postJoke', {newJoke}).toPromise();
+    return await this.httpClient.post(serverConfig.serverURL + userId + '/postJoke', { newJoke }).toPromise();
   }
   async rateJoke(userId: number, newRate: any) {
-    return await this.httpClient.post('http://localhost:3000/user/' + userId + '/rateJoke', {newRate}).toPromise();
+    return await this.httpClient.post(serverConfig.serverURL + userId + '/rateJoke', { newRate }).toPromise();
   }
 
-  async getTopOfTheMonth(){
-    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfMonth').toPromise();
+  async getTopOfTheMonth() {
+    return await this.httpClient.get(serverConfig.serverURL + 'getTopTenOfMonth').toPromise();
   }
 
-  async getTopOfTheYear(){
-    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfYear').toPromise();
+  async getTopOfTheYear() {
+    return await this.httpClient.get(serverConfig.serverURL + 'getTopTenOfYear').toPromise();
   }
 
-  async getTopOfAllTime(){
-    return await this.httpClient.get('http://localhost:3000/user/getTopTenOfAllTime').toPromise();
+  async getTopOfAllTime() {
+    return await this.httpClient.get(serverConfig.serverURL + 'getTopTenOfAllTime').toPromise();
   }
 
   async searchJokesByUsername(username) {
-    return await this.httpClient.get('http://localhost:3000/user/getJokesForUsername/' + username).toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + 'getJokesForUsername/' + username).toPromise();
   }
 
   async getTenRandomJokes() {
-    const res = await this.httpClient.get('http://localhost:3000/user/getTenRandomJokes').toPromise();
+    const res = await this.httpClient.get(serverConfig.serverURL + 'getTenRandomJokes').toPromise();
     return res;
   }
 
   async getUserHomeFeedJokes(userId: number) {
-    const res =  await this.httpClient.get('http://localhost:3000/user/' + userId + '/getHomeFeedJokes/').toPromise();
+    const res = await this.httpClient.get(serverConfig.serverURL + userId + '/getHomeFeedJokes/').toPromise();
     return res;
   }
 
-  async reportJoke(report:any) {
-    console.log(report)
-    return await this.httpClient.post('http://localhost:3000/user/report', {report}).toPromise();
+  async reportJoke(report: any) {
+    return await this.httpClient.post(serverConfig.serverURL + 'report', { report }).toPromise();
   }
 }

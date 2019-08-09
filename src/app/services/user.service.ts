@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import serverConfig from '../serverConfig';
 
 
 @Injectable({
@@ -11,36 +12,36 @@ export class UserService {
   }
 
   async getUser(userId: number): Promise<any> {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/fetchUser').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/fetchUser').toPromise();
   }
 
   async getUserJokes(userId: number): Promise<any> {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/getTopJokesPosted').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/getTopJokesPosted').toPromise();
   }
 
   async getFavoriteCategories(userId: number): Promise<any> {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/getFavoriteCategories').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/getFavoriteCategories').toPromise();
   }
 
   async getUserJokesCount(userId: number) {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/userJokesCount').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/userJokesCount').toPromise();
   }
 
   async getAverageOfJokesPosted(userId: number) {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/averageOfJokesPosted').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/averageOfJokesPosted').toPromise();
   }
 
   async getFollowers(userId: number) {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/followers').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/followers').toPromise();
   }
 
   async getFollowees(userId: number) {
-    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/followees').toPromise();
+    return await this.httpClient.get(serverConfig.serverURL + userId + '/followees').toPromise();
   }
 
   async login(user: any) {
 
-    const res = await this.httpClient.post('http://localhost:3000/user/login', { user }).toPromise();
+    const res = await this.httpClient.post(serverConfig.serverURL + 'login', { user }).toPromise();
 
     if (res === null) {
       alert('Invalid username/password');
@@ -54,7 +55,7 @@ export class UserService {
   }
 
   async register(user: any) {
-    const res = await this.httpClient.post('http://localhost:3000/user/register', { user }).toPromise();
+    const res = await this.httpClient.post(serverConfig.serverURL + 'register', { user }).toPromise();
 
     console.log(res);
 
@@ -75,15 +76,15 @@ export class UserService {
   }
 
   async followUser(followerId, followeeId) {
-    await this.httpClient.post('http://localhost:3000/user/followUser',
+    await this.httpClient.post(serverConfig.serverURL + 'followUser',
       {
         followerId,
         followeeId
-    }).toPromise();
+      }).toPromise();
   }
 
-  async unfollowUser(followerId, followeeId){
-    await this.httpClient.post('http://localhost:3000/user/unfollowUser',
+  async unfollowUser(followerId, followeeId) {
+    await this.httpClient.post(serverConfig.serverURL + 'unfollowUser',
       {
         followerId,
         followeeId
