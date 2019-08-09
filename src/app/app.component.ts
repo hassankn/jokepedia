@@ -7,10 +7,13 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'jokepedia';
+  loggedIn: boolean;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    this.loggedIn = false;
+  }
 
   getLoggedInUser() {
     return this.userService.getLoggedInUser();
@@ -18,5 +21,12 @@ export class AppComponent {
 
   logout() {
     this.userService.logout();
+  }
+
+  ngOnInit(): void {
+    if(this.getLoggedInUser()) {
+      console.log("A user is logged in")
+      this.loggedIn = true;
+    }
   }
 }

@@ -45,11 +45,14 @@
         <div class="row">
 
           <div class="col-sm-2">
-            <h6>Rating Avg</h6>
-            <p>{{joke.avgRating}}</p>
+            <h6>Avg. Rating:</h6>
+            <p style="margin-left: 10px;">{{joke.avgRating}}</p>
+            <h6 [hidden]="!joke.Category">Category:</h6>
+            <p style="margin-left: 10px;">{{joke.Category}}</p>
+
           </div>
           <div class="col-sm-9">
-            <a routerLink="/profile/{{joke.userId}}"><label style="color: #844444">{{joke.username}}</label></a> 
+            <a routerLink="/profile/{{joke.userId}}"><label style="color: #844444">{{joke.username}}</label></a>
             <p>{{joke.text}}</p>
             <!-- Use Angular's date pipe to format date -->
           </div>
@@ -74,7 +77,7 @@
             <a (click)="jokeRating(1, joke.jokeId)"><img src="../../assets/1.png" class="emoji button" style="margin-top: 10px"></a>
           </div>
           <!-- Use Angular's date pipe to format date -->
-          <label style="margin-left: auto">{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
+          <label id='timestamp' style="margin-left: auto">{{ joke.timeStamp | date:'mediumDate' }} {{ joke.timeStamp | date:'shortTime' }}</label>
         </div>
       </div>
     </ng-container>

@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   jokes: any = [];
   categories: any = [];
-  feedCategory: any = '';
+  feedCategory: any = 'All The Jokes 😛';
 
-  sortFilter: any = '';
+  sortFilter: any = 'Hot';
 
   searchText: any = '';
 
@@ -38,7 +38,9 @@ export class HomeComponent implements OnInit {
   async getHomeFeedJokes() {
 
     if (this.userService.getLoggedInUser() == null) {
-      this.jokes = this.jokeService.getTenRandomJokes();
+      this.jokes = await this.jokeService.getTenRandomJokes();
+      console.log("no one is logged in")
+      console.log(this.jokes)
     } else {
       const userId = await this.userService.getLoggedInUser().userId;
       this.jokes = await this.jokeService.getUserHomeFeedJokes(userId);
