@@ -30,6 +30,14 @@ export class UserService {
     return await this.httpClient.get('http://localhost:3000/user/' + userId + '/averageOfJokesPosted').toPromise();
   }
 
+  async getFollowers(userId: number) {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/followers').toPromise();
+  }
+
+  async getFollowees(userId: number) {
+    return await this.httpClient.get('http://localhost:3000/user/' + userId + '/followees').toPromise();
+  }
+
   async login(user: any) {
 
     const res = await this.httpClient.post('http://localhost:3000/user/login', { user }).toPromise();
@@ -64,5 +72,21 @@ export class UserService {
     } else {
       return null;
     }
+  }
+
+  async followUser(followerId, followeeId) {
+    await this.httpClient.post('http://localhost:3000/user/followUser',
+      {
+        followerId,
+        followeeId
+    }).toPromise();
+  }
+
+  async unfollowUser(followerId, followeeId){
+    await this.httpClient.post('http://localhost:3000/user/unfollowUser',
+      {
+        followerId,
+        followeeId
+      }).toPromise();
   }
 }

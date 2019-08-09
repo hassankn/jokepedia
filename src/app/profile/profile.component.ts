@@ -15,16 +15,30 @@ export class ProfileComponent implements OnInit {
   ) {
   }
 
-  user: string;
+  user: any;
   userJokes = [];
+  loggedInUser: any;
   userJokesCount: any;
   userAverageOfJokesPosted: any;
   favoriteCategories = [];
+  profileId: any;
+
+  followers: any;
+  followees: any;
+
+  followFlag: number;
+  onUsersProfileFlag: number;
 
   ngOnInit() {
+    this.followFlag = 0;
+    this.onUsersProfileFlag = 0;
+    this.loggedInUser = this.userService.getLoggedInUser();
     let id = this.route.snapshot.paramMap.get('userId');
+    this.profileId = id;
     console.log(id);
     if (id === null) {
+      console.log('On user profile page');
+      this.onUsersProfileFlag = 1;
       id = this.userService.getLoggedInUser().userId;
     }
     this.getUser(id);
@@ -32,6 +46,8 @@ export class ProfileComponent implements OnInit {
     this.getUserJokesCount(id);
     this.getUserAverageRating(id);
     this.getFavoriteCategories(id);
+    this.getUserFollowers(id);
+    this.getUserFollowees(id);
   }
 
   async getUser(id) {
@@ -58,5 +74,32 @@ export class ProfileComponent implements OnInit {
 
   async getUserAverageRating(id) {
     this.userAverageOfJokesPosted = await this.userService.getAverageOfJokesPosted(id);
+  }
+
+  async getUserFollowers(id) {
+    this.followers = await this.userService.getFollowers(id);
+    this.followers.map(follower => {
+      if (follower.username === this.loggedInUser['username']) {
+        this.followFlag = 1;
+      }
+    });
+  }
+
+  async getUserFollowees(id) {
+    this.followees = await this.userService.getFollowees(id);
+  }
+
+  async followUser() {
+    console.log('following' + this.profileId + ' by ' + this.loggedInUser['userId']);
+    await this.userService.followUser(this.loggedInUser['userId'], this.profileId);
+    this.followFlag = 1;
+    await this.getUserFollowers(this.profileId);
+  }
+
+  async unfollowUser() {
+    console.log('Unfollowing' + this.profileId + ' by ' + this.loggedInUser['userId']);
+    await this.userService.unfollowUser(this.loggedInUser['userId'], this.profileId);
+    this.followFlag = 0;
+    await this.getUserFollowers(this.profileId);
   }
 }

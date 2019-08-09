@@ -1,15 +1,70 @@
 <div id="profile-container" class="container-fluid">
 <div class="row" id="profile-row">
-  <div class="col-3" id="profile-username">
+  <div class="col-4" id="profile-username">
+    <div class="profile-img-div">
     <img height="185px"
-         class="mt-4 rounded img-fluid"
+         class="mt-4 img-fluid"
          id="profile-img"
       src="../../assets/profile.png"
     />
-    <h1 id="username" class="text-white text-center">@{{this.user.username}}</h1>
+    </div>
+    <h1 id="username" class="text-white text-center">{{this.user.name}}</h1>
+    <div class="text-center">
+      <div *ngIf="followFlag===1 && onUsersProfileFlag!==1">
+      <button (click)="unfollowUser()"
+              class="btn btn-success follow-btn"
+      >
+        <h5 class="pt-2 text-white font-weight-bold">Following</h5>
+      </button>
+      </div>
+      <div *ngIf="followFlag === 0 && onUsersProfileFlag!==1">
+    <button (click)="followUser()"
+      class="btn btn-primary follow-btn">
+      <h5 class="pt-2 text-white font-weight-bold">Follow</h5>
+    </button>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Followers</h5>
+          </div>
+          <div class="card-body text-center follow-card">
+            <ul class="list-group">
+              <li class="list-group-item rounded-lg bg-warning mb-1"
+                *ngFor="let follower of followers">
+                <a class="text-primary font-weight-bold"
+                  href="/profile/{{follower.userId}}">
+                {{follower.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Following</h5>
+          </div>
+          <div class="card-body text-center follow-card">
+            <ul class="list-group">
+              <li class="list-group-item rounded-lg bg-warning mb-1"
+                  *ngFor="let followee of followees">
+                <a class="text-primary font-weight-bold"
+                  href="/profile/{{followee.userId}}">
+                {{followee.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-9">
-    <div class="row mb-5">
+  <div class="col-8">
+    <div class="row mb-3">
       <div class="card mt-4" id="top-jokes-card">
         <div class="card-header">
           <h2 class="text-center text-danger font-weight-bold">Top 10 Jokes</h2>
@@ -44,7 +99,7 @@
       <div class="col">
         <div class="card cat-card">
           <div class="card-header">
-          <h5 class="text-center">Favorite Categories</h5>
+          <h4 class="text-center font-weight-bolder">Favorite Categories</h4>
           </div>
           <div class="card-body">
         </div>
