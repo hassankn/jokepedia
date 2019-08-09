@@ -51,7 +51,7 @@ export class UserService {
     console.log(res);
 
     if (res === null) {
-      alert('This username is already taken! Please');
+      alert('This username is already taken! Please use a different username :)');
     } else {
       localStorage.setItem('user', JSON.stringify(res));
     }

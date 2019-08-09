@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public router: Router
+    private router: Router
   ) { }
 
   username: string;
@@ -43,9 +43,6 @@ export class RegisterComponent implements OnInit {
       if (this.userService.getLoggedInUser() !== null) {
         this.router.navigate(['/home']);
       }
-
     }
-
-
   }
 }

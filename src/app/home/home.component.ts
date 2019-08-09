@@ -24,10 +24,12 @@ export class HomeComponent implements OnInit {
 
   postJokeCategory: any = '';
   postJokeText: any = '';
+  userLoggedIn: boolean;
 
   ngOnInit() {
     this.getHomeFeedJokes();
     this.getCategories();
+    this.userLoggedIn = this.userService.getLoggedInUser();
   }
 
   async getCategories() {
@@ -53,7 +55,9 @@ export class HomeComponent implements OnInit {
     newJoke.text = this.postJokeText;
     newJoke.categoryId = this.postJokeCategory;
 
-    const res = await this.jokeService.postJoke(newJoke);
+    const userId = await this.userService.getLoggedInUser().userId;
+
+    const res = await this.jokeService.postJoke(userId, newJoke);
     if (res['text'] === newJoke.text) {
       alert('Joke Inserted! :)');
     } else {
@@ -84,7 +88,9 @@ export class HomeComponent implements OnInit {
     rate.rating = ratingScore;
     console.log(ratingScore + ' ' + jokeId);
 
-    const res = await this.jokeService.rateJoke(rate);
+    const userId = await this.userService.getLoggedInUser().userId;
+
+    const res = await this.jokeService.rateJoke(userId, rate);
     console.log(res);
     if (res['joke'].jokeId === jokeId && res['rating'] === ratingScore) {
       alert('Joke Rated! :)');
