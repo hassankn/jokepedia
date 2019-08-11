@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   searchText: any = '';
 
-  postJokeCategory: any = '';
+  postJokeCategory: any;
   postJokeText: any = '';
   userLoggedIn: boolean;
 
@@ -48,7 +48,8 @@ export class HomeComponent implements OnInit {
   }
 
   async postJoke() {
-    if (this.postJokeText.length === 0 || this.postJokeCategory.length === 0) {
+    console.log(this.postJokeCategory);
+    if (this.postJokeText.length === 0 || this.postJokeCategory === undefined) {
       alert('Please enter a joke and select a category first! :)');
     } else {
       const newJoke: any = {};
@@ -65,7 +66,6 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
 
   async reportJoke(jokeId: number) {
     const userId = await this.userService.getLoggedInUser().userId;
