@@ -100,9 +100,6 @@ export class HomeComponent implements OnInit {
     } else {
       alert('There was in issue rating the joke :(');
     }
-
-    this.getHomeFeedJokes();
-
   }
 
   async sortJokes(event) {
