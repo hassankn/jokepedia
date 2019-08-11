@@ -48,17 +48,22 @@ export class HomeComponent implements OnInit {
   }
 
   async postJoke() {
-    const newJoke: any = {};
-    newJoke.text = this.postJokeText;
-    newJoke.categoryId = this.postJokeCategory;
 
-    const userId = await this.userService.getLoggedInUser().userId;
-
-    const res = await this.jokeService.postJoke(userId, newJoke);
-    if (res['text'] === newJoke.text) {
-      alert('Joke Inserted! :)');
+    if (this.postJokeText.length === 0) {
+      alert('Please enter a joke first! :)');
     } else {
-      alert('There was in issue inserting the joke :(');
+      const newJoke: any = {};
+      newJoke.text = this.postJokeText;
+      newJoke.categoryId = this.postJokeCategory;
+
+      const userId = await this.userService.getLoggedInUser().userId;
+
+      const res = await this.jokeService.postJoke(userId, newJoke);
+      if (res['text'] === newJoke.text) {
+        alert('Joke Inserted! :)');
+      } else {
+        alert('There was in issue inserting the joke :(');
+      }
     }
   }
 
