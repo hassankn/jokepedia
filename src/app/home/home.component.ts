@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
 
   async getCategories() {
     this.categories = await this.jokeService.getCategories();
-    console.log(this.categories);
   }
 
   async getHomeFeedJokes() {
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   async postJoke() {
-    console.log(this.postJokeCategory);
     if (this.postJokeText.length === 0 || this.postJokeCategory === undefined) {
       alert('Please enter a joke and select a category first! :)');
     } else {
@@ -79,7 +77,11 @@ export class HomeComponent implements OnInit {
   }
 
   async onCategoryChange() {
-    this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
+    if (this.feedCategory === 'All The Jokes 😛') {
+      this.jokes = await this.jokeService.getTenRandomJokes();
+    } else {
+      this.jokes = await this.jokeService.getJokesForCategory(this.feedCategory);
+    }
   }
 
   async jokeRating(ratingScore: number, jokeId: number) {

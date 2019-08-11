@@ -24,8 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.getLoggedInUser()) {
-      console.log("A user is logged in")
+    if (this.getLoggedInUser()) {
       this.loggedIn = true;
     }
   }
